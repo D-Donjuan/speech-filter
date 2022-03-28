@@ -16,6 +16,7 @@ def main():
     firstInst = FileFilter(debateString, stopWordsString)
     firstInst.removePunctuations()
     firstInst.removeStopWords()
+    firstInst.countUniqueWords()
 
 
 if __name__ == "__main__":
