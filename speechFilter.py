@@ -17,11 +17,20 @@ class FileFilter:
 
     def removePunctuations(self):
         punctuations = string.punctuation
+
         for char in self.textFile:
             if char in punctuations:
                 self.textFile = self.textFile.replace(char , "") 
 
-        self.testReadTextFile()
+    def removeStopWords(self):
+
+        splitDebateText = self.textFile.split()
+        splitStopWords = self.stopWordsFile.split()
+        updatedDebateTextSplit = [word for word in splitDebateText if word.lower() not in splitStopWords]
+        self.textFile = updatedDebateTextSplit
+
+
+
 
 
 
