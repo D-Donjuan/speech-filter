@@ -6,6 +6,7 @@ class FileFilter:
     def __init__(self, textFile, stopWordsFile):
         self.textFile = textFile
         self.stopWordsFile = stopWordsFile
+        self.uniqueWords = {}
 
     def testReadTextFile(self):
         for i in self.textFile:
@@ -28,6 +29,16 @@ class FileFilter:
         splitStopWords = self.stopWordsFile.split()
         updatedDebateTextSplit = [word for word in splitDebateText if word.lower() not in splitStopWords]
         self.textFile = updatedDebateTextSplit
+
+    def countUniqueWords(self):
+
+        for word in self.textFile:
+            if word in self.uniqueWords:
+                self.uniqueWords[word] += 1
+            else:
+                self.uniqueWords[word] = 1
+        
+        print(self.uniqueWords)
 
 
 
