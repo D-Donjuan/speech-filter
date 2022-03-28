@@ -1,13 +1,20 @@
-from speechFilter import testFunction
-
-
-
+from string import punctuation
+from speechFilter import FileFilter
+from menu import fileChoose
+import string
 
 def main():
-    print("Hello World!")
-    print("change dev branch")
+    debateFile = open("debate.txt", "r")
+    debateString = debateFile.read()
+    debateFile.close()
 
-    print(testFunction())
+
+    stopWordsFile = open("stopWords.txt", "r")
+    stopWordsString = stopWordsFile.read()
+    stopWordsFile.close()
+
+    firstInst = FileFilter(debateString, stopWordsString)
+    firstInst.removePunctuations()
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ class FileFilter:
 
     def __init__(self, textFile, stopWordsFile):
         self.textFile = textFile
-        self.stopWordsFile = open(stopWordsFile, 'r')
+        self.stopWordsFile = stopWordsFile
 
     def testReadTextFile(self):
         for i in self.textFile:
@@ -16,13 +16,14 @@ class FileFilter:
             print(i)
 
     def removePunctuations(self):
-        text = self.textFile
-        textSplitIntoWords = text.split(" ")
-        puncCharacters = string.punctuation
+        punctuations = string.punctuation
+        for char in self.textFile:
+            if char in punctuations:
+                self.textFile = self.textFile.replace(char , "") 
 
-        for char in text:
-            if char in puncCharacters:
-                text = t
+        self.testReadTextFile()
+
+
 
         
         
