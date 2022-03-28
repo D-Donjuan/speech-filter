@@ -25,7 +25,7 @@ def fileChoose():
 
         choice = input("Type 'yes' to proceed or 'no' to retype file path and name: ")
         print("\n")
-        
+
         if choice == 'yes':
             fileNotChosen = False
         elif choice == 'no':
