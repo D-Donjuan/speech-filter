@@ -41,12 +41,23 @@ class FileFilter:
             else:
                 self.uniqueWords[word] = 1
         
-    def editStopWordsFile(self, input):
+    def removeStopWordsFromFile(self, input):
         stopWordFileSplit = self.stopWordsFile.split()
         updatedStopWordFile = [word for word in stopWordFileSplit if word.lower() not in input]
         self.stopWordsFile = ' '.join(updatedStopWordFile)
-        # for x in self.stopWordsFile:
-        #     print(x)
+
+
+    def addWordToFile(self, input):
+        stopWordFileSplit = self.stopWordsFile.split()
+        for word in input:
+            print(word)
+            if word not in stopWordFileSplit:
+                stopWordFileSplit.append(word)
+            else:
+                print(word, " is already in the stopWords textfile.")
+        self.stopWordsFile = stopWordFileSplit
+
+
 
     def historyOfFilteredFiles(self):
         self.history["self.textFile"] = self.uniqueWords
