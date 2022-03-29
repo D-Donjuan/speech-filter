@@ -1,4 +1,6 @@
 import string
+import pprint
+
 
 class FileFilter:
 
@@ -7,6 +9,7 @@ class FileFilter:
         self.textFile = textFile
         self.stopWordsFile = stopWordsFile
         self.uniqueWords = {}
+        self.history = {}
 
     def testReadTextFile(self):
         for i in self.textFile:
@@ -38,7 +41,19 @@ class FileFilter:
             else:
                 self.uniqueWords[word] = 1
         
-        print(self.uniqueWords)
+    def editStopWordsFile(self, input):
+        stopWordFileSplit = self.stopWordsFile.split()
+        updatedStopWordFile = [word for word in stopWordFileSplit if word.lower() not in input]
+        self.stopWordsFile = ' '.join(updatedStopWordFile)
+        # for x in self.stopWordsFile:
+        #     print(x)
+
+    def historyOfFilteredFiles(self):
+        self.history["self.textFile"] = self.uniqueWords
+        self.history["another.textFile"] = self.uniqueWords
+        print(self.history)
+
+
 
 
 

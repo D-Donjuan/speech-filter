@@ -6,8 +6,9 @@ def showTitle():
     print("======================================================================\n")
 
 def showProgramDescription():
-    print("This program will remove common words/puncutations and only count words \n")
-    print("That are unique. \n")
+    print("This program will get any text file and remove punctuations/common words and count unique words in file. ")
+    print("You will get the option to either remove common words that are provided in \n")
+    print("a default file, which you can edit or provide your own text file with your own common words to remove.  \n")
 
 def fileChoose():
     showTitle()
@@ -34,3 +35,5 @@ def fileChoose():
             filename = input("Invalid input. Please enter the file path and name: ")
     
     return filename
+
+
