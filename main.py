@@ -18,17 +18,34 @@ def main():
     firstInst.removeStopWords()
     firstInst.countUniqueWords()
     firstInst.historyOfFilteredFiles()
-    firstInst.testReadStopWordsFile()
+    # firstInst.testReadStopWordsFile()
+
     finishInput = False
     deleteWordsList = []
+
     while not finishInput:
         deleteWord = input("Please enter the word you want to delete. Type :q to finish: ")
         if deleteWord == ":q":
-            firstInst.editStopWordsFile(deleteWordsList)
+            firstInst.removeStopWordsFromFile(deleteWordsList)
             finishInput = True
         else:
             deleteWordsList.append(deleteWord)
 
+    deleteWordsList = []
+
+    addWordsDone = False
+    addWordsList = []
+
+    while not addWordsDone:
+        addWord = input("Please enter the word you want to add. Type :q to finish: ")
+        if addWord == ":q":
+            firstInst.addWordToFile(addWordsList)
+            addWordsDone = True
+        else:
+            addWordsList.append(addWord)
+        
+    addWordsList = []
+        
     firstInst.testReadStopWordsFile()
 
 
