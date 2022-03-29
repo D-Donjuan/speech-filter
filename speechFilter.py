@@ -16,7 +16,8 @@ class FileFilter:
             print(i)
 
     def testReadStopWordsFile(self):
-        for i in self.stopWordsFile:
+        listOfStopWords = self.stopWordsFile
+        for i in listOfStopWords:
             print(i)
 
     def removePunctuations(self):
@@ -40,6 +41,9 @@ class FileFilter:
                 self.uniqueWords[word] += 1
             else:
                 self.uniqueWords[word] = 1
+        
+        print(self.uniqueWords)
+
         
     def removeStopWordsFromFile(self, input):
         stopWordFileSplit = self.stopWordsFile.split()

@@ -1,52 +1,52 @@
-from string import punctuation
-from speechFilter import FileFilter
-from menu import fileChoose
-import string
+from menu import optionChoice
+
 
 def main():
-    debateFile = open("algo.txt", "r")
-    debateString = debateFile.read()
-    debateFile.close()
+    # debateFile = open("algo.txt", "r")
+    # debateString = debateFile.read()
+    # debateFile.close()
 
 
-    stopWordsFile = open("stopWords.txt", "r")
-    stopWordsString = stopWordsFile.read()
-    stopWordsFile.close()
+    # stopWordsFile = open("stopWords.txt", "r")
+    # stopWordsString = stopWordsFile.read()
+    # stopWordsFile.close()
 
-    firstInst = FileFilter(debateString, stopWordsString)
-    firstInst.removePunctuations()
-    firstInst.removeStopWords()
-    firstInst.countUniqueWords()
-    firstInst.historyOfFilteredFiles()
+    # firstInst = FileFilter(debateString, stopWordsString)
+    # firstInst.removePunctuations()
+    # firstInst.removeStopWords()
+    # firstInst.countUniqueWords()
+    # firstInst.historyOfFilteredFiles()
     # firstInst.testReadStopWordsFile()
 
-    finishInput = False
-    deleteWordsList = []
+    # finishInput = False
+    # deleteWordsList = []
 
-    while not finishInput:
-        deleteWord = input("Please enter the word you want to delete. Type :q to finish: ")
-        if deleteWord == ":q":
-            firstInst.removeStopWordsFromFile(deleteWordsList)
-            finishInput = True
-        else:
-            deleteWordsList.append(deleteWord)
+    # while not finishInput:
+    #     deleteWord = input("Please enter the word you want to delete. Type :q to finish: ")
+    #     if deleteWord == ":q":
+    #         firstInst.removeStopWordsFromFile(deleteWordsList)
+    #         finishInput = True
+    #     else:
+    #         deleteWordsList.append(deleteWord)
 
-    deleteWordsList = []
+    # deleteWordsList = []
 
-    addWordsDone = False
-    addWordsList = []
+    # addWordsDone = False
+    # addWordsList = []
 
-    while not addWordsDone:
-        addWord = input("Please enter the word you want to add. Type :q to finish: ")
-        if addWord == ":q":
-            firstInst.addWordToFile(addWordsList)
-            addWordsDone = True
-        else:
-            addWordsList.append(addWord)
+    # while not addWordsDone:
+    #     addWord = input("Please enter the word you want to add. Type :q to finish: ")
+    #     if addWord == ":q":
+    #         firstInst.addWordToFile(addWordsList)
+    #         addWordsDone = True
+    #     else:
+    #         addWordsList.append(addWord)
         
-    addWordsList = []
+    # addWordsList = []
         
-    firstInst.testReadStopWordsFile()
+    # firstInst.testReadStopWordsFile()
+
+    optionChoice()
 
 
 if __name__ == "__main__":
