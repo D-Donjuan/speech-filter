@@ -7,7 +7,7 @@ def showTitle():
     print("======================================================================")
     print("======================================================================\n")
     print("This program will get any text file and remove punctuations/common words and count unique words in file. ")
-    print("You will get the option to either remove common words that are provided in \n")
+    print("You will get the option to either remove common words that are provided in")
     print("a default file, which you can edit or provide your own text file with your own common words to remove.  \n")
 
 
@@ -21,16 +21,16 @@ def menuOptions():
     print("3. View Filtered TextFile History")
     print("5. Exit Program \n")
 
-def optionChoice():
+def optionChoice(userInstance):
     exitProgram = False
 
     while not exitProgram:
-        showTitle()
+
         menuOptions()
         choice = input("Please enter your choice: ")
 
         if choice == "1":
-            initializeProgram()
+            initializeProgram(userInstance)
         elif choice == "2":
             print("this is option 2")
         elif choice == "3":
@@ -90,21 +90,7 @@ def selectStopWordFileOption():
     return stopWordFile
 
 
-def initializeProgram():
-    print("Please enter the text file that you would like to filter")
-    fileTofilter = getTextFileName()
-    stopWordFile = selectStopWordFileOption()
-
-    debateFile = open(fileTofilter, "r")
-    fileFilterString = debateFile.read()
-    debateFile.close()
-
-
-    stopWordsFile = open(stopWordFile, "r")
-    stopWordsString = stopWordsFile.read()
-    stopWordsFile.close()
-    
-    userInstance = FileFilter(fileFilterString, stopWordsString)
+def initializeProgram(userInstance):
     userInstance.removePunctuations()
     userInstance.removeStopWords()
     userInstance.countUniqueWords()
