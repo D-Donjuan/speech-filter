@@ -5,9 +5,10 @@ import pprint
 class FileFilter:
 
 
-    def __init__(self, textFile, stopWordsFile):
+    def __init__(self, textFile, stopWordsFile, filename):
         self.textFile = textFile
         self.stopWordsFile = stopWordsFile
+        self.filename = filename
         self.uniqueWords = {}
         self.history = {}
 
@@ -16,7 +17,7 @@ class FileFilter:
             print(i)
 
     def testReadStopWordsFile(self):
-        listOfStopWords = self.stopWordsFile
+        listOfStopWords = self.stopWordsFile.split()
         for i in listOfStopWords:
             print(i)
 
@@ -43,6 +44,8 @@ class FileFilter:
                 self.uniqueWords[word] = 1
         
         print(self.uniqueWords)
+        self.textFile = ' '.join(self.textFile)
+
 
         
     def removeStopWordsFromFile(self, input):
@@ -59,14 +62,14 @@ class FileFilter:
                 stopWordFileSplit.append(word)
             else:
                 print(word, " is already in the stopWords textfile.")
-        self.stopWordsFile = stopWordFileSplit
+        self.stopWordsFile = ' '.join(stopWordFileSplit)
 
 
 
     def historyOfFilteredFiles(self):
-        self.history["self.textFile"] = self.uniqueWords
-        self.history["another.textFile"] = self.uniqueWords
+        self.history[self.filename] = self.uniqueWords
         print(self.history)
+        print("\n")
 
 
 
