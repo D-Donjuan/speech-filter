@@ -19,7 +19,7 @@ def main():
     stopWordsString = stopWordsFile.read()
     stopWordsFile.close()
 
-    userInstance = FileFilter(fileFilterString, stopWordsString)
+    userInstance = FileFilter(fileFilterString, stopWordsString, fileToFilter)
     optionChoice(userInstance)
 
 
