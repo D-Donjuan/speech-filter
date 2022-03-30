@@ -7,7 +7,7 @@ def showTitle():
     print("======================================================================")
     print("======================================================================\n")
     print("This program will get any text file and remove punctuations/common words and count unique words in file. ")
-    print("You will get the option to either remove common words that are provided in \n")
+    print("You will get the option to either remove common words that are provided in")
     print("a default file, which you can edit or provide your own text file with your own common words to remove.  \n")
 
 
@@ -19,25 +19,23 @@ def menuOptions():
     print("1. Start Filtering Process")
     print("2. Edit/Enter wordStop File")
     print("3. View Filtered TextFile History")
-    print("5. Exit Program \n")
+    print("4. Exit Program \n")
 
-def optionChoice():
+def optionChoice(userInstance):
     exitProgram = False
 
     while not exitProgram:
-        showTitle()
+
         menuOptions()
         choice = input("Please enter your choice: ")
 
         if choice == "1":
-            initializeProgram()
+            initializeProgram(userInstance)
         elif choice == "2":
-            print("this is option 2")
+            editStopWordsFile(userInstance)
         elif choice == "3":
-            print("This is option 3")
+            userInstance.historyOfFilteredFiles()
         elif choice == "4":
-            print("This is option 4")
-        elif choice == "5":
             print("Thank you for using The File Filtering Program.")
             print("Good Bye!")
             exitProgram = True
@@ -89,25 +87,64 @@ def selectStopWordFileOption():
 
     return stopWordFile
 
+def editStopWordsFile(userInstance):
 
-def initializeProgram():
-    print("Please enter the text file that you would like to filter")
-    fileTofilter = getTextFileName()
-    stopWordFile = selectStopWordFileOption()
+    notSelection = True
+    while notSelection:
+        print("Edit WordStop File Menu")
+        print("1. View current words in stopWords file")
+        print("2. Add stopWords to file")
+        print("3. Remove stopWords to a file")
+        print("4. Exit Edit Menu")
+        selection = input("Please enter the number corresponding to the action above: ")
 
-    debateFile = open(fileTofilter, "r")
-    fileFilterString = debateFile.read()
-    debateFile.close()
+        if selection == "1":
+            userInstance.testReadStopWordsFile()
+        elif selection == "2":
+            createAddWordsList(userInstance)
+        elif selection == "3":
+            createRemoveWordsList(userInstance)
+        elif selection == "4":
+            notSelection = False
+        else:
+            print("Invalid Option.")
 
 
-    stopWordsFile = open(stopWordFile, "r")
-    stopWordsString = stopWordsFile.read()
-    stopWordsFile.close()
-    
-    userInstance = FileFilter(fileFilterString, stopWordsString)
+def initializeProgram(userInstance):
     userInstance.removePunctuations()
     userInstance.removeStopWords()
     userInstance.countUniqueWords()
+    print("\n")
+
+
+
+def createRemoveWordsList(userInstance):
+    
+    finishInput = False
+    deleteWordsList = []
+    while not finishInput:
+        deleteWord = input("Please enter the word you want to delete. Type :q to finish: ")
+        if deleteWord == ":q":
+            userInstance.removeStopWordsFromFile(deleteWordsList)
+            finishInput = True
+        else:
+            deleteWordsList.append(deleteWord)
+
+    deleteWordsList = []
+
+def createAddWordsList(userInstance):
+    addWordsDone = False
+    addWordsList = []
+
+    while not addWordsDone:
+        addWord = input("Please enter the word you want to add. Type :q to finish: ")
+        if addWord == ":q":
+            userInstance.addWordToFile(addWordsList)
+            addWordsDone = True
+        else:
+            addWordsList.append(addWord)
+
+    addWordsList = []
 
     
 
