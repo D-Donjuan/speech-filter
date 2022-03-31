@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import string
 import pprint
 
@@ -20,6 +21,7 @@ class FileFilter:
         listOfStopWords = self.stopWordsFile.split()
         for i in listOfStopWords:
             print(i)
+        print("\n")
 
     def removePunctuations(self):
         punctuations = string.punctuation
@@ -36,7 +38,8 @@ class FileFilter:
         self.textFile = updatedDebateTextSplit
 
     def countUniqueWords(self):
-
+        
+        self.uniqueWords = {}
         for word in self.textFile:
             if word in self.uniqueWords:
                 self.uniqueWords[word] += 1
@@ -44,6 +47,9 @@ class FileFilter:
                 self.uniqueWords[word] = 1
         
         print(self.uniqueWords)
+        if self.filename in self.history:
+            self.filename = self.filename + str(1)
+        self.history[self.filename] = self.uniqueWords
         self.textFile = ' '.join(self.textFile)
 
 
@@ -67,9 +73,7 @@ class FileFilter:
 
 
     def historyOfFilteredFiles(self):
-        self.history[self.filename] = self.uniqueWords
         print(self.history)
-        print("\n")
 
 
 
