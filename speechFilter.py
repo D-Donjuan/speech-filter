@@ -22,6 +22,20 @@ class FileFilter:
         for i in listOfStopWords:
             print(i)
         print("\n")
+    
+    def swapFileToFilter(self, file):
+        newFileToFilter = open(file, "r")
+        newFileFilterString = newFileToFilter.read()
+        newFileToFilter.close()
+        self.textFile = newFileFilterString
+        self.filename = file
+
+    def swapStopWordsFile(self, file):
+        stopWordsFile = open(file, "r")
+        newStopWordsString = stopWordsFile.read()
+        stopWordsFile.close()
+        self.filename = file
+        self.stopWordsFile = newStopWordsString
 
     def removePunctuations(self):
         punctuations = string.punctuation
@@ -74,6 +88,7 @@ class FileFilter:
 
     def historyOfFilteredFiles(self):
         print(self.history)
+        print("\n")
 
 
 

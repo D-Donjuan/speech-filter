@@ -17,10 +17,11 @@ def showTitle():
 def menuOptions():
 
     print("Please select one of the following options by entering the number associated with the choice")
-    print("1. Edit/Enter wordStop File")
-    print("2. Start Filtering Process")
+    print("1. Start Filtering Process")
+    print("2. Edit/Enter wordStop File")
     print("3. View Filtered TextFile History")
-    print("4. Exit Program \n")
+    print("4. Upload a different text file to filter")
+    print("5. Exit Program \n")
 
 def optionChoice(userInstance):
     exitProgram = False
@@ -29,14 +30,17 @@ def optionChoice(userInstance):
 
         menuOptions()
         choice = input("Please enter your choice: ")
+        print("\n")
 
         if choice == "1":
-            editStopWordsFile(userInstance)
-        elif choice == "2":
             initializeProgram(userInstance)
+        elif choice == "2":
+            editStopWordsFile(userInstance)
         elif choice == "3":
             userInstance.historyOfFilteredFiles()
         elif choice == "4":
+            uploadDifferentTextFileToFilter(userInstance)
+        elif choice == "5":
             print("Thank you for using The File Filtering Program.")
             print("Good Bye!")
             exitProgram = True
@@ -93,7 +97,8 @@ def editStopWordsFile(userInstance):
         print("1. View current words in stopWords file")
         print("2. Add stopWords to file")
         print("3. Remove stopWords to a file")
-        print("4. Exit Edit Menu\n")
+        print("4. Upload a different StopWords file")
+        print("5. Exit Edit Menu\n")
         selection = input("Please enter the number corresponding to the action above: ")
 
         if selection == "1":
@@ -103,17 +108,11 @@ def editStopWordsFile(userInstance):
         elif selection == "3":
             createRemoveWordsList(userInstance)
         elif selection == "4":
+            uploadDifferentTextFileToFilter(userInstance)
+        elif selection == "5":
             notSelection = False
         else:
             print("Invalid Option.")
-
-
-def initializeProgram(userInstance):
-    userInstance.removePunctuations()
-    userInstance.removeStopWords()
-    userInstance.countUniqueWords()
-    print("\n")
-
 
 
 def createRemoveWordsList(userInstance):
@@ -144,6 +143,23 @@ def createAddWordsList(userInstance):
             addWordsList.append(addWord)
     print("\n")
     addWordsList = []
+
+def uploadDifferentStopWordsFile(userInstance):
+    filename = input("Please type the file path that you would like to use: ")
+    userInstance.swapStopWordsFile(filename)
+    print("The file ", filename, " has been uploaded.")
+
+def uploadDifferentTextFileToFilter(userInstance):
+    filename = input("Please type the file path that you would like to use: ")
+    userInstance.swapFileToFilter(filename)
+    print("The file ", filename, " has been uploaded.")
+
+def initializeProgram(userInstance):
+    userInstance.removePunctuations()
+    userInstance.removeStopWords()
+    userInstance.countUniqueWords()
+    print("\n")
+
 
     
 
