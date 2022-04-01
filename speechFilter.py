@@ -18,6 +18,7 @@ class FileFilter:
             print(i)
 
     def testReadStopWordsFile(self):
+        input("Stop words will be displayed in a column. Press ENTER to continue.")
         listOfStopWords = self.stopWordsFile.split()
         for i in listOfStopWords:
             print(i)
@@ -60,7 +61,8 @@ class FileFilter:
             else:
                 self.uniqueWords[word] = 1
         
-        print(self.uniqueWords)
+        for key, value in self.uniqueWords.items():
+            print(key, ' : ', value)
         if self.filename in self.history:
             self.filename = self.filename + str(1)
         self.history[self.filename] = self.uniqueWords
@@ -82,12 +84,17 @@ class FileFilter:
                 stopWordFileSplit.append(word)
             else:
                 print(word, " is already in the stopWords textfile.")
+            
         self.stopWordsFile = ' '.join(stopWordFileSplit)
 
 
 
     def historyOfFilteredFiles(self):
-        print(self.history)
+        input("Press Enter to view history of filtered files.")
+        for key, value in self.history.items():
+            print(key, ' : ', value)
+            print("\n")
+            
         print("\n")
 
 

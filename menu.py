@@ -56,6 +56,7 @@ def getTextFileName():
         textFileName = input("Enter the file path and name for the text file you would like to use: ")
         print("Is this the correct file path and name you would like to use?: ", textFileName, "\n")
         choice = input("Type 'yes' to proceed or 'no' to retype file path and name: ")
+        print("\n")
 
         if choice == 'yes':
             fileNotChosen = False
@@ -77,6 +78,7 @@ def selectStopWordFileOption():
         print("1. Use default StopWord File")
         print("2. Use your own StopWord File")
         stopWordFile = input("Enter your option: ")
+        print("\n")
 
         if stopWordFile == "1":
             stopWordFile = "stopWords.txt"
@@ -148,13 +150,16 @@ def uploadDifferentStopWordsFile(userInstance):
     filename = input("Please type the file path that you would like to use: ")
     userInstance.swapStopWordsFile(filename)
     print("The file ", filename, " has been uploaded.")
+    print("\n")
 
 def uploadDifferentTextFileToFilter(userInstance):
     filename = input("Please type the file path that you would like to use: ")
     userInstance.swapFileToFilter(filename)
     print("The file ", filename, " has been uploaded.")
+    print("\n")
 
 def initializeProgram(userInstance):
+    input("Program will now initialize. Press ENTER to execute. \n")
     userInstance.removePunctuations()
     userInstance.removeStopWords()
     userInstance.countUniqueWords()
